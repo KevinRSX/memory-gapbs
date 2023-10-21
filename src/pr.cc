@@ -11,6 +11,8 @@
 #include "graph.h"
 #include "pvector.h"
 
+#include "include/magicops.h"
+
 /*
 GAP Benchmark Suite
 Kernel: PageRank (PR)
@@ -106,6 +108,7 @@ int main(int argc, char* argv[]) {
   auto VerifierBound = [&cli] (const Graph &g, const pvector<ScoreT> &scores) {
     return PRVerifier(g, scores, cli.tolerance());
   };
+  
   BenchmarkKernel(cli, g, PRBound, PrintTopScores, VerifierBound);
   return 0;
 }
