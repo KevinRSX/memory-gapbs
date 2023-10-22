@@ -42,6 +42,9 @@ pvector<ScoreT> PageRankPullGS(const Graph &g, int max_iters, double epsilon=0,
   #pragma omp parallel for
   for (NodeID n=0; n < g.num_nodes(); n++)
     outgoing_contrib[n] = init_score / g.out_degree(n);
+
+  zsim_magic_op_start_sim();
+  printf("Start simulation\n");
   for (int iter=0; iter < max_iters; iter++) {
     double error = 0;
     #pragma omp parallel for reduction(+ : error) schedule(dynamic, 16384)
@@ -59,6 +62,7 @@ pvector<ScoreT> PageRankPullGS(const Graph &g, int max_iters, double epsilon=0,
     if (error < epsilon)
       break;
   }
+  zsim_magic_op_end_sim();
   return scores;
 }
 

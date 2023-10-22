@@ -17,8 +17,6 @@
 #include "util.h"
 #include "writer.h"
 
-#include "include/magicops.h"
-
 
 /*
 GAP Benchmark Suite
@@ -107,9 +105,7 @@ void BenchmarkKernel(const CLApp &cli, const GraphT_ &g,
   Timer trial_timer;
   for (int iter=0; iter < cli.num_trials(); iter++) {
     trial_timer.Start();
-    zsim_magic_op_start_sim();
     auto result = kernel(g);
-    zsim_magic_op_end_sim();
     trial_timer.Stop();
     PrintTime("Trial Time", trial_timer.Seconds());
     total_seconds += trial_timer.Seconds();
