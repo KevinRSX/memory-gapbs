@@ -1,1 +1,4 @@
-Place holder
+# memory-gapbs
+This is the repo for the course final project of CMU's [15-418/15-618: Parallel Computer Architecture and Programming, Fall 2023](https://www.cs.cmu.edu/~418/).
+
+See the web page required for this project [here](https://kevinrsx.github.io/memory-gapbs/).
