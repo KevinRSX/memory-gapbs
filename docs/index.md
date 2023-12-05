@@ -4,8 +4,12 @@
 - [GitHub repo](https://github.com/KevinRSX/ memory-gapbs)
 - [Project website](./)
 - [Proposal (PDF)](./15618_proposal.pdf)
-- Milestone report (TBA)
+- [Milestone report (PDF)](./15618_milestone.pdf)
 - Final report (TBA)
+
+## Project Updates
+
+Please refer to the [milestone report](./15618_milestone.pdf) for a description of the updates to this project as of December 4th.
 
 ## Justification for a One-person Team
 
@@ -47,4 +51,4 @@ We hope to complete the following if the previous part shows solid results and i
 
 ## Schedule
 
-Please refer to the [proposal](./15618_proposal) for the schedule. This section will be updated when an item is completed.
+Please refer to the [proposal](./15618_proposal) for an initial schedule and the [milestone report](./15618_milestone) for an updated schedule.
