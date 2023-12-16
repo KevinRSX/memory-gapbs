@@ -1,23 +1,20 @@
-# Smart Page Size Allocation of Parallel Graph Applications in a Tiered-memory
+# Understanding the Performance of Parallel Applications in a Tiered-memory System
 ## Links
 
 - [GitHub repo](https://github.com/KevinRSX/memory-gapbs)
 - [Project website](./)
 - [Proposal (PDF)](./15618_proposal.pdf)
 - [Milestone report (PDF)](./15618_milestone.pdf)
-- Final report (TBA)
+- [Final report (PDF)](./15618_report.pdf)
+- [Poster (PDF)](./15618_poster.pdf)
 
 ## Project Updates
 
-Please refer to the [milestone report](./15618_milestone.pdf) for a description of the updates to this project as of December 4th.
-
-## Justification for a One-person Team
-
-The course staff permitted me to work on this project individually. The project is an extension of my ongoing research work done in the CAOS group at CMU. Sum Yin Kwok and Kaiyang Zhao, while not enrolled in our class, also contributed to the original project. Their specific effort will be credited in the final report.
+Please refer to the [milestone report](./15618_milestone.pdf) for a description of the updates to this project as of December 4th, and the [final report](./15618_report.pdf) for the final report.
 
 ## Summary
 
-In this project, we shall analyze the performance of parallel graph applications in a tiered-memory system with multiple page sizes and explore how smartly allocating pages of different sizes interplays with such an environment. Both studies will involve various aspects of parallel applications, including end-to-end performance, TLB pressure, cache performance, work imbalance, etc.
+This project serves as a motivation for research that aims at solving these problems. We first discuss the memory manage- ment background and review the issues with existing solutions in detail. To overcome these problems, we propose *hotness walk*, a design that provides architectural support for detecting the hotness of pages in any range. Then, we extend a full-system simulator to prepare us to implement offloading and page size promotion algorithms. Using the simulator, we profile the performance of the parallel applications to profile the challenge and discuss the feasibility of the design. Finally, we use the evaluation results to direct the future work to be done to complete the details of this design.
 
 ## Background and Challenges
 
@@ -31,24 +28,27 @@ Parallelism complicates these issues even more for various reasons. For example,
 - what pages should be offloaded to the CXL (lower tier) memory?
 -  how do different processors behave in a tiered-memory system with multiple page sizes?
 
-## Resources
+## Central Problem - What is Hot?
 
-We will use the Entropy server provided by the Parallel Data Lab to conduct the experiment. We will use modified versions of [QEMU](https://www.qemu.org/) and [The Structural Simulation Toolkit](https://sst-simulator.org/}) to simulate the hardware environment we need. We will use the GAP Benchmark Suite to run the parallel graph applications with OpenMPI.
+Four requirements of hotness:
 
-## Goals and Deliverables
+- Tracked in a fine granularity
+- Low overhead of tracking
+- Low overhead of a decision policy
+- Need per-process hotness to ensure fairness
 
-This project is composed of two parts. The first part is an analysis of parallel graph applications running on tiered-memory systems with different page sizes. This part will motivate a need for a set of smart memory management policies in this environment. In the second part, we will propose an algorithm for smartly managing page sizes based on the page access temperature gathered from a novel technique called **hotness walk**. In both parts, we will compare work balance and memory access patterns across different processors, and describe how the environment and our algorithm inter-plays with the parallel workloads.
+Take a look at Section 3 in the [final report](./15618_report.pdf) for how we tackle these requirements!
 
-Specifically, by the deadline of the project's final report, we plan to have completed the following:
+## Evaluation Goals
 
-- a hardware simulation environment for CXL and multiple page sizes running on multiple cores
-- a study that motivates a need for a set of smart memory management policies in a tiered-memory system with different page sizes
-- a characterization of the memory access behavior as well as the related overhead in the data cache and TLB on different cores
+1. What is the performance of parallel applications running on a tiered-memory system with multiple page sizes?
+2. Will workload be more imbalanced due to the longer la- tency of accessing the slower memory tier? Is the tiered- memory environment something that requires the paral- lel application programmer to react upon?
+3. What are the TLB miss rates under different configura- tions of page sizes and memory tiers?
+4. What is the cost to synchronize the hotness update of multiple cores?
+5. Why is it necessary to track hotness in a fine granularity? How imbalanced is page hotness among the address space?
 
-We hope to complete the following if the previous part shows solid results and if the time permits:
-
-- development of an algorithm that dynamically allocates pages of different sizes based on historical memory access data and an analysis of its effect on parallel graph applications
+Take a look at Section 5 in the [final report](./15618_report.pdf) for a discussion of it!
 
 ## Schedule
 
-Please refer to the [proposal](./15618_proposal) for an initial schedule and the [milestone report](./15618_milestone) for an updated schedule.
+**As of the submission of the final report, all items have been completed. The last item of designing an algorithm is left as future research work.** Please refer to the [proposal](./15618_proposal) for an initial schedule and the [milestone report](./15618_milestone) for an updated schedule.
