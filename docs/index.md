@@ -14,7 +14,7 @@ Please refer to the [milestone report](./15618_milestone.pdf) for a description 
 
 ## Summary
 
-This project serves as a motivation for research that aims at solving these problems. We first discuss the memory manage- ment background and review the issues with existing solutions in detail. To overcome these problems, we propose *hotness walk*, a design that provides architectural support for detecting the hotness of pages in any range. Then, we extend a full-system simulator to prepare us to implement offloading and page size promotion algorithms. Using the simulator, we profile the performance of the parallel applications to profile the challenge and discuss the feasibility of the design. Finally, we use the evaluation results to direct the future work to be done to complete the details of this design.
+This project serves as a motivation for research that aims at solving these problems. We first discuss the memory management background and review the issues with existing solutions in detail. To overcome these problems, we propose *hotness walk*, a design that provides architectural support for detecting the hotness of pages in any range. Then, we extend a full-system simulator to prepare us to implement offloading and page size promotion algorithms. Using the simulator, we profile the performance of the parallel applications to profile the challenge and discuss the feasibility of the design. Finally, we use the evaluation results to direct the future work to be done to complete the details of this design.
 
 ## Background and Challenges
 
