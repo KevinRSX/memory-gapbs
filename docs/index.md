@@ -10,7 +10,7 @@
 
 ## Project Updates
 
-Please refer to the [milestone report](./15618_milestone.pdf) for a description of the updates to this project as of December 4th, and the [final report](./15618_report.pdf) for the final report.
+Please refer to the [milestone report](./15618_milestone.pdf) for a description of the updates to this project as of December 4th, and the [final report](./15618_report.pdf) for the submitted work.
 
 ## Summary
 
