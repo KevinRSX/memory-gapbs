@@ -13,6 +13,7 @@
 #include "pvector.h"
 #include "sliding_queue.h"
 #include "timer.h"
+#include "include/magicops.h"
 
 
 /*
@@ -139,6 +140,7 @@ pvector<NodeID> DOBFS(const Graph &g, NodeID source, bool logging_enabled = fals
   front.reset();
   int64_t edges_to_check = g.num_edges_directed();
   int64_t scout_count = g.out_degree(source);
+  zsim_magic_op_start_sim();
   while (!queue.empty()) {
     if (scout_count > edges_to_check / alpha) {
       int64_t awake_count, old_awake_count;
@@ -175,6 +177,7 @@ pvector<NodeID> DOBFS(const Graph &g, NodeID source, bool logging_enabled = fals
   for (NodeID n = 0; n < g.num_nodes(); n++)
     if (parent[n] < -1)
       parent[n] = -1;
+  zsim_magic_op_end_sim();
   return parent;
 }
 
